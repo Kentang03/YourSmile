@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a65a7fbcdf50ac4fa51ce3a239c787a, type: 3}
+  m_Name: EnemyDetails_Grimonk_Brown
+  m_EditorClassIdentifier: 
+  enemyName: Grimonk Brown
+  enemyPrefab: {fileID: 2384552106828123955, guid: 83673f26c85c78d49954395f121f0bef, type: 3}
+  chaseDistance: 50
+  enemyWeapon: {fileID: 11400000, guid: 6475a2fc81f7e834d904fa87d706c24a, type: 2}
+  firingIntervalMin: 0.1
+  firingIntervalMax: 1
+  firingDurationMin: 1
+  firingDurationMax: 2
+  firingLineOfSightRequired: 1
+  enemyHealthDetailsArray:
+  - dungeonLevel: {fileID: 11400000, guid: 6e2a41216908dba439b1a7b319cc1c36, type: 2}
+    enemyHealthAmount: 12
+  - dungeonLevel: {fileID: 11400000, guid: 68f3938926e89bb4d8cbb1cda530262a, type: 2}
+    enemyHealthAmount: 15
+  isImmunityAfterHit: 0
+  hitImmunityTime: 0

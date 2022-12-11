@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2708e4084c4a1534ba646096300f778c, type: 3}
+  m_Name: Room_LargeRoom_Catacombs_5
+  m_EditorClassIdentifier: 
+  guid: 4a96b5efb9b0ea14992859361c7045d6
+  prefab: {fileID: 4327421925113694216, guid: b04604f793e18b64a92ab7349eeca246, type: 3}
+  previousPrefab: {fileID: 4327421925113694216, guid: b04604f793e18b64a92ab7349eeca246, type: 3}
+  roomNodeType: {fileID: 11400000, guid: 3b7c09a8b081a8a4f90dc11346ab8195, type: 2}
+  lowerBounds: {x: -13, y: 3}
+  upperBounds: {x: 46, y: 64}
+  doorwayList:
+  - position: {x: 17, y: 64}
+    orientation: 0
+    doorPrefab: {fileID: 9003972808732252672, guid: 2be2e2d8e2cf2bb46a083085eab5afa8, type: 3}
+    doorwayStartCopyPosition: {x: 14, y: 64}
+    doorwayCopyTileWidth: 5
+    doorwayCopyTileHeight: 9
+    isConnected: 0
+    isUnavailable: 0
+  - position: {x: 17, y: 3}
+    orientation: 2
+    doorPrefab: {fileID: 9003972808732252672, guid: 2be2e2d8e2cf2bb46a083085eab5afa8, type: 3}
+    doorwayStartCopyPosition: {x: 14, y: 6}
+    doorwayCopyTileWidth: 5
+    doorwayCopyTileHeight: 4
+    isConnected: 0
+    isUnavailable: 0
+  - position: {x: 46, y: 32}
+    orientation: 1
+    doorPrefab: {fileID: 7885701399725206023, guid: 95be5a52dfef9ac4781cc093fc8be499, type: 3}
+    doorwayStartCopyPosition: {x: 43, y: 38}
+    doorwayCopyTileWidth: 4
+    doorwayCopyTileHeight: 8
+    isConnected: 0
+    isUnavailable: 0
+  - position: {x: -13, y: 32}
+    orientation: 3
+    doorPrefab: {fileID: 7885701399725206023, guid: 95be5a52dfef9ac4781cc093fc8be499, type: 3}
+    doorwayStartCopyPosition: {x: -13, y: 38}
+    doorwayCopyTileWidth: 4
+    doorwayCopyTileHeight: 8
+    isConnected: 0
+    isUnavailable: 0
+  spawnPositionArray:
+  - {x: 0, y: 52}
+  - {x: 17, y: 52}
+  - {x: 33, y: 53}
+  - {x: 17, y: 42}
+  - {x: -3, y: 35}
+  - {x: 16, y: 34}
+  - {x: 36, y: 34}
+  - {x: 16, y: 28}
+  - {x: 9, y: 15}
+  - {x: 26, y: 14}
+  enemiesByLevelList:
+  - dungeonLevel: {fileID: 11400000, guid: 6e2a41216908dba439b1a7b319cc1c36, type: 2}
+    spawnableObjectRatioList:
+    - dungeonObject: {fileID: 11400000, guid: 997f14bc0f6dc2f49b05ba3cf57d9306, type: 2}
+      ratio: 4
+    - dungeonObject: {fileID: 11400000, guid: 66f3fea7eb6493c48a40abc461a39956, type: 2}
+      ratio: 6
+    - dungeonObject: {fileID: 11400000, guid: dab725ddde7363946ad832a4ced59c8e, type: 2}
+      ratio: 5
+  roomEnemySpawnParametersList:
+  - dungeonLevel: {fileID: 11400000, guid: 6e2a41216908dba439b1a7b319cc1c36, type: 2}
+    minTotalEnemiesToSpawn: 60
+    maxTotalEnemiesToSpawn: 100
+    minConcurrentEnemies: 25
+    maxConcurrentEnemies: 30
+    minSpawnInterval: 1
+    maxSpawnInterval: 3

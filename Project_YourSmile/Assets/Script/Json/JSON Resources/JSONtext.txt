@@ -1,0 +1,34 @@
+ {
+    "player" : [
+        {
+            "leftName" : "D:/Project_YourSmile/Project_YourSmile/Assets/Asset Image/UI/Cahya/Asset_Potrait_Cahya_Marah.png",
+            "rightName" : "Dahlia",
+            "Dialogue" : "Ah maafkan aku, Aku tidak bermaksud membentakmu. Ada apa gadis kecil?"
+        },
+        {
+            "leftName" : "Kakak",
+            "rightName" : "Dahlia",
+            "Dialogue" : "Sebenarnya… Dahlia ingin memberitahu keadaan Cahya, Apa Kakak akan memarahi Dahlia?"
+        },
+        {
+            "leftName" : "Kakak",
+            "rightName" : "Dahlia",
+            "Dialogue" : "Ah tidak-tidak, tidak akan."
+        },
+        {
+            "leftName" : "Kakak",
+            "rightName" : "Dahlia",
+            "Dialogue" : " Sebentar… Sepertinya aku mengenalmu. Mata biru berkilau dan wajah yang begitu manis. Bukannya kamu Dahlia teman Cahya sedari kecil?"
+        },
+        {
+            "leftName" : "Kakak",
+            "rightName" : "Dahlia",
+            "Dialogue" : " Sebentar… Sepertinya aku mengenalmu. Mata biru berkilau dan wajah yang begitu manis. Bukannya kamu Dahlia teman Cahya sedari kecil?"
+        },
+        {
+            "leftName" : "Kakak",
+            "rightName" : "Dahlia",
+            "Dialogue" : "Tentu saja. Walau kamu sangat pemalu, tetapi kamu selalu tersenyum dan terlihat senang ketika bersama Cahya."
+        }
+    ]
+ }

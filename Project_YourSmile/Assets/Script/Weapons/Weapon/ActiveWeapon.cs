@@ -1,0 +1,114 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[RequireComponent(typeof(SetActiveWeaponEvent))]
+[DisallowMultipleComponent]
+
+public class ActiveWeapon : MonoBehaviour
+{
+    #region 
+    [Tooltip("Populate with the Sprite Renderer on the child Weapon gameObject ")]
+    #endregion
+    [SerializeField] private SpriteRenderer weaponSpriteRenderer;
+
+    #region 
+    [Tooltip("Populate with PolygonCollider2D on the child Weapon gameObject ")]
+    #endregion
+    [SerializeField] private PolygonCollider2D weaponPolygonCollider2D;
+
+    #region 
+    [Tooltip("Populate with the transform on the WeaponShootPosition gameObject ")]
+    #endregion
+    [SerializeField] private Transform weaponShootPositionTransform;
+
+    #region 
+    [Tooltip("Populate with the transform on the WeaponShootPosition gameObject ")]
+    #endregion
+    [SerializeField] private Transform weaponEffectPositionTransform;
+
+    private SetActiveWeaponEvent setWeaponEvent;
+    private Weapon currentWeapon;
+
+    private void Awake()
+    {
+        //Load Components
+        setWeaponEvent = GetComponent<SetActiveWeaponEvent>();
+    }
+
+    private void OnEnable()
+    {
+        setWeaponEvent.OnSetActiveWeapon += SetWeaponEvent_OnSetActiveWeapon;
+    }
+
+    private void OnDisable()
+    {
+        setWeaponEvent.OnSetActiveWeapon -= SetWeaponEvent_OnSetActiveWeapon;
+    }
+
+    private void SetWeaponEvent_OnSetActiveWeapon(SetActiveWeaponEvent setActiveWeaponEvent, SetActiveWeaponEventArgs setActiveWeaponEventArgs)
+    {
+        SetWeapon(setActiveWeaponEventArgs.weapon);
+    }
+
+    private void SetWeapon(Weapon weapon)
+    {
+        currentWeapon = weapon;
+        
+        weaponSpriteRenderer.sprite = currentWeapon.weaponDetails.weaponSprite;
+
+        //If the weapon has a polygon collider and a sprite then set it to the weapon sprite physic shape
+        if(weaponPolygonCollider2D != null && weaponSpriteRenderer.sprite != null)
+        {
+            //Get sprite physics shape - this returns the sprite physics shape points as a list of Vector2
+            List<Vector2> spritePhysicsShapePointsList = new List<Vector2>();
+            weaponSpriteRenderer.sprite.GetPhysicsShape(0, spritePhysicsShapePointsList);
+
+            //Set polygon collider on weapon to pick up physics shape for sprite - set collider point to sprite physics shape points
+            weaponPolygonCollider2D.points = spritePhysicsShapePointsList.ToArray();
+        }
+
+        //Set weapon shoot position
+        weaponShootPositionTransform.localPosition = currentWeapon.weaponDetails.weaponShootPosition;
+    }
+
+    public AmmoDetailsSO GetCurrentAmmo()
+    {
+        return currentWeapon.weaponDetails.weaponCurrentAmmo;
+    }
+
+    public Weapon GetCurrentWeapon()
+    {
+        return currentWeapon;
+    }
+
+    public Vector3 GetShootPosition()
+    {
+        return weaponShootPositionTransform.position;
+    }
+
+    public Vector3 GetShootEffectPosition()
+    {
+        return weaponEffectPositionTransform.position;
+    }
+
+    public void RemoveCurrentWeapon()
+    {
+        currentWeapon = null;
+    }
+
+    #region Validation
+#if UNITY_EDITOR
+
+    private void OnValidate()
+    {
+        HelperUtilities.ValidateCheckNullValue(this, nameof(weaponSpriteRenderer), weaponSpriteRenderer);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(weaponPolygonCollider2D), weaponPolygonCollider2D);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(weaponShootPositionTransform), weaponShootPositionTransform);
+        HelperUtilities.ValidateCheckNullValue(this, nameof(weaponEffectPositionTransform), weaponEffectPositionTransform);
+    }
+
+#endif
+    #endregion
+
+}

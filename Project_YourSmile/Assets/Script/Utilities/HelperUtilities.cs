@@ -1,0 +1,245 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public static class HelperUtilities
+{
+    public static Camera mainCamera;
+    //Get mouse world position
+    public static Vector3 GetMouseWorldPosition()
+    {
+        if(mainCamera == null) mainCamera = Camera.main;
+
+        Vector3 mouseScreenPosition = Input.mousePosition;
+
+        mouseScreenPosition.x = Mathf.Clamp(mouseScreenPosition.x, 0f, Screen.width);
+        mouseScreenPosition.y = Mathf.Clamp(mouseScreenPosition.y, 0f, Screen.width);
+
+        Vector3 worldPosition = mainCamera.ScreenToWorldPoint(mouseScreenPosition);
+        
+        worldPosition.z = 0f;
+        return worldPosition;
+
+    }
+
+    //Get the angle in degrees from a direction vector
+    public static float GetAngleFromVector(Vector3 vector)
+    {
+        float radians = Mathf.Atan2(vector.y, vector.x);
+        float degrees = radians * Mathf.Rad2Deg;
+        return degrees;
+    }
+
+    public static Vector3 GetDirectionVectorFromAngle(float angle)
+    {
+        Vector3 directionVector = new Vector3(Mathf.Cos(Mathf.Deg2Rad * angle), Mathf.Sin(Mathf.Deg2Rad * angle), 0f);
+        return directionVector;
+    }
+
+    //get AimDirection enum value from the pased in angleDegrees
+    public static AimDirection GetAimDirection(float angleDegrees)
+    {
+        AimDirection aimDirection;
+        //Set Player Direction  
+        if ((angleDegrees > 90f && angleDegrees <= 180f) || (angleDegrees > -180f && angleDegrees <= -90f))
+        {
+            aimDirection = AimDirection.Left;
+        }
+
+        //Right
+        else if ((angleDegrees > 0f && angleDegrees <= 90f) || (angleDegrees > -90f && angleDegrees <= 0f))
+        {
+            aimDirection = AimDirection.Right;
+        }
+
+        else
+        {
+            aimDirection = AimDirection.Right;
+        }
+
+        return aimDirection;        
+        
+        /*
+        //Up Right
+        if (angleDegrees > 22f && angleDegrees <= 67f)
+        {
+            aimDirection = AimDirection.UpRight;
+        }
+
+        //Up
+        else if (angleDegrees > 67f && angleDegrees <= 112f)
+        {
+            aimDirection = AimDirection.Up;
+        }
+
+        //Up Left
+        else if (angleDegrees > 112f && angleDegrees <= 158f)
+        {
+            aimDirection = AimDirection.UpLeft;
+        }
+
+        //Left
+        else if ((angleDegrees > 158f && angleDegrees <= 180f) || (angleDegrees > -180f && angleDegrees <= -135f))
+        {
+            aimDirection = AimDirection.Left;
+        }
+
+        //Down
+        else if (angleDegrees > -135f && angleDegrees <= -45f)
+        {
+            aimDirection = AimDirection.Down;
+        }
+
+        //Right
+        else if ((angleDegrees > -45f && angleDegrees <= 0f) || (angleDegrees > 0f && angleDegrees <= 22f))
+        {
+            aimDirection = AimDirection.Right;
+        }
+
+        else
+        {
+            aimDirection = AimDirection.Right;
+        }
+        */       
+    }
+
+    
+        //Empty string debug check
+    public static bool ValidateCheckEmptyString(Object thisObject, string fieldName, string stringToCheck)
+    {
+        if (stringToCheck == "")
+        {
+            Debug.Log(fieldName + " is empty and must contain a value in object " + thisObject.name.ToString());
+            return true;
+        }
+        return false;
+    }
+
+    public static bool ValidateCheckNullValue(Object thisObject, string fieldName, UnityEngine.Object objectToCheck)
+    {
+        if (objectToCheck == null)
+        {
+            Debug.Log(fieldName + " is null and must contain a value in object " + thisObject.name.ToString());
+            return true;
+        }
+        return false;
+    }
+
+    public static bool ValidateCheckEnumerableValues(Object thisObject, string fieldName, IEnumerable enumerableObjectToCheck)
+    {
+        bool error = false;
+        int count = 0;
+
+        if (enumerableObjectToCheck == null)
+        {
+            Debug.Log(fieldName + " is null in object " + thisObject.name.ToString());
+            error = true;
+        }
+        else 
+        {
+            count++;
+        }
+
+        if (count == 0)
+        {
+            Debug.Log(fieldName + " has no values in object " + thisObject.name.ToString());
+            error = true;
+        }
+
+        return error;
+    }
+
+    public static bool ValidateCheckPositiveValue(Object thisObject, string fieldName, int valueToCheck, bool isZeroAllowed)
+    {
+        bool error = false;
+
+        if(isZeroAllowed)
+        {
+            if(valueToCheck < 0)
+            {
+                Debug.Log(fieldName + " must contain a positive value or zero in object " + thisObject.name.ToString());
+            }
+        }
+
+        else
+        {
+            if(valueToCheck <= 0)
+            {
+                Debug.Log(fieldName + " must contain a positive value in object " + thisObject.name.ToString());
+            }
+        }
+
+        return error;
+    }
+    
+    public static bool ValidateCheckPositiveValue(Object thisObject, string fieldName, float valueToCheck, bool isZeroAllowed)
+    {
+        bool error = false;
+
+        if(isZeroAllowed)
+        {
+            if(valueToCheck < 0)
+            {
+                Debug.Log(fieldName + " must contain a positive value or zero in object " + thisObject.name.ToString());
+            }
+        }
+
+        else
+        {
+            if(valueToCheck <= 0)
+            {
+                Debug.Log(fieldName + " must contain a positive value in object " + thisObject.name.ToString());
+            }
+        }
+
+        return error;
+    }
+
+    public static bool ValidateCheckPositiveRange(Object thisObject, string fieldNameMinimum, float valueToCheckMinimum, string fieldNameMaximum, float valueToCheckMaximum, bool isZeroAllowed)
+    {
+        bool error = false;
+        if(valueToCheckMinimum > valueToCheckMaximum)
+        {
+            Debug.Log(fieldNameMinimum + " must be less than of equal to " + fieldNameMaximum +  " in object "  + thisObject.name.ToString());
+            error = true;
+        }
+
+        if(ValidateCheckPositiveValue(thisObject, fieldNameMinimum, valueToCheckMinimum, isZeroAllowed)) error = true;
+        
+        if(ValidateCheckPositiveValue(thisObject, fieldNameMaximum, valueToCheckMaximum, isZeroAllowed)) error = true;
+
+        return error;
+    }
+    
+    public static Vector3 GetSpawnPositionNearestToPlayer(Vector3 playerPosition)
+    {
+        Room currentRoom = GameManager.Instance.GetCurrentRoom();
+
+        Grid grid = currentRoom.instantiatedRoom.grid;
+
+        Vector3 nearestSpawnPosition = new Vector3(10000f, 10000f, 0f);
+
+        //Loop through spawn position
+        foreach(Vector2Int spawnPositionGrid in currentRoom.spawnPositionArray)
+        {
+            //Convert the spawn grid position to world position
+            Vector3 spawnPositionWorld = grid.CellToWorld((Vector3Int)spawnPositionGrid);
+            //Vector3 spawnPositionWorld = new Vector3(0f, 0f, 0f);
+
+            if(Vector3.Distance(spawnPositionWorld, playerPosition) < Vector3.Distance(nearestSpawnPosition, playerPosition))
+            {
+                nearestSpawnPosition = spawnPositionWorld;
+            }
+        }
+
+        return nearestSpawnPosition;
+    }
+    
+    
+    
+
+
+
+
+
+}

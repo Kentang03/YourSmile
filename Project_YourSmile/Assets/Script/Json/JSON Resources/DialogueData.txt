@@ -1,0 +1,28 @@
+ {
+    "player" : [
+        {
+            "leftName" : "Kakak",
+            "rightName" : "Dahlia",
+            "leftImage" : "D:/Project_YourSmile/Project_YourSmile/Assets/Asset Image/UI/Cahya/Asset_Potrait_Cahya_Marah.png",
+            "rightImage" : "D:/Project_YourSmile/Project_YourSmile/Assets/Asset Image/UI/Kakak/Kaka_eks_45dig_kalem-euy.png",
+            "leftBorder" : "D:/Project_YourSmile/Project_YourSmile/Assets/Asset Image/UI/Kakak/Kaka_eks_45dig_kalem-euy.png",
+            "rightBorder" : "D:/Project_YourSmile/Project_YourSmile/Assets/Asset Image/UI/Kakak/Kaka_eks_45dig_kalem-euy.png",
+            "Dialogue" : "Ah maafkan aku, Aku tidak bermaksud membentakmu. Ada apa gadis kecil?"
+        },
+        {
+            "leftName" : "Kakak",
+            "rightName" : "Dahlia",
+            "leftImage" : "D:/Project_YourSmile/Project_YourSmile/Assets/Asset Image/UI/Cahya/Asset_Potrait_Cahya_Marah.png",
+            "rightImage" : "D:/Project_YourSmile/Project_YourSmile/Assets/Asset Image/UI/Kakak/Kaka_eks_45dig_kalem-euy.png",
+            "leftBorder" : "D:/Project_YourSmile/Project_YourSmile/Assets/Asset Image/UI/Kakak/Kaka_eks_45dig_kalem-euy.png",
+            "rightBorder" : "D:/Project_YourSmile/Project_YourSmile/Assets/Asset Image/UI/Kakak/Kaka_eks_45dig_kalem-euy.png",
+            "Dialogue" : "Ah maafkan aku, Aku tidak bermaksud membentakmu. Ada apa gadis kecil?"
+        }
+      
+    ]
+ }
+
+
+
+            
+            
